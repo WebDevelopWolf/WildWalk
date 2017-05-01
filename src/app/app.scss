@@ -1,0 +1,17 @@
+// http://ionicframework.com/docs/v2/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+
+// Global Fonts
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+@font-face {
+    font-family: 'gooddog_plainregular';
+    src: url('../assets/fonts/gooddp__-webfont.woff2') format('woff2'),
+         url('../assets/fonts/gooddp__-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}

@@ -1,0 +1,49 @@
+page-home {
+   img {
+       width: 260px;
+       margin: 49px 0px 40px 0px; 
+   }
+
+   .content {
+       background: url(../assets/img/onboarding/Background.png);
+       background-size: cover;
+       background-repeat: no-repeat;
+       text-align: center;
+   }
+
+   #intro {
+       background: #e7e7e7;
+       width: 100%;
+       padding: 37px 33px;
+   }
+
+   #buttons {
+       padding-top: 27px;
+       margin: 0px auto;
+       text-align: center;
+   }
+
+   p {
+       text-align: justify;
+       font-size: 9px;
+       color: #222;
+       font-family: 'Open Sans', sans-serif;
+   }
+
+   button {
+       height: 34px !important;
+       text-align: center !important;
+       border-radius: 0px !important;
+       margin: 0px !important;
+       padding: 11px 0px !important;
+       width: 120px !important;
+       font-family: 'gooddog_plainregular' !important;
+       font-size: 12px !important;
+       letter-spacing: 0.075em !important;
+       font-weight: bold !important;
+   }
+
+   .first {
+       margin-right: 10px !important;
+   }
+}

@@ -1,0 +1,21 @@
+
+<ion-header>
+  <ion-navbar>
+    <img src="assests/img/onboarding/logo-small.png"/>
+    <button ion-button end menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <p>{{login}}</p>
+  <br />
+  <ion-list>
+    <ion-item *ngFor="let item of repos" >
+      {{item.name}}, 
+    </ion-item>
+  </ion-list>
+</ion-content>
+
