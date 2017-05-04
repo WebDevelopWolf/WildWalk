@@ -3,11 +3,11 @@
   <div id="loginContainer">
     <ion-item>
       <ion-label stacked>Username</ion-label>
-      <ion-input type="text" ></ion-input>
+      <ion-input type="text" [(ngModel)]="usernameInput" ></ion-input>
     </ion-item>
     <ion-item>
       <ion-label stacked>Password</ion-label>
-      <ion-input type="password" ></ion-input>
+      <ion-input type="password" [(ngModel)]="passwordInput"></ion-input>
     </ion-item>
     <button ion-button full (click)="login()">Start your adventure</button>
   </div>

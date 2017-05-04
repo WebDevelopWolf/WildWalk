@@ -18,7 +18,8 @@ export class HomeLoggedIn {
 
   ionViewDidLoad() {
     this.wwapi.getLoginTest().then(data => this.login = data).then(data => console.log(this.login));
-    console.log('ionViewDidLoad HomeLoggedIn')
+    console.log('ionViewDidLoad HomeLoggedIn');
+    console.log(sessionStorage['name']);
 
     let selectedUser = 'WebDevelopWolf';
     this.wwapi.getRepoData(selectedUser).subscribe(data => {
