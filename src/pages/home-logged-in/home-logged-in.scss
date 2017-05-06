@@ -1,3 +1,209 @@
-page-home-logged-in {
+page-home-logged-in {    
+    .heading {
+        height: 163px;
+        background: url(../assets/img/home/Background.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        border-bottom: 4px solid #259e39;
+        text-align: center;
+    }
 
+    #userImage {
+        border-radius: 50%;
+        width: 66px;
+        border: 2px solid #FFF;
+        margin-top:27px;
+    }
+
+    #username {
+        font-family: 'gooddog_plainregular';
+        color: #e7e7e7;
+        letter-spacing: 0.075em;
+        font-size: 18px;
+        margin-top: 6px;
+        margin-bottom: 0px;
+    }
+
+    #progressBar {
+        width: 50%;
+        margin: 0px auto;
+        background: #33c217;
+        text-align: center;
+        margin-top: 10px;
+        height: 15px;
+        border-radius: 10px;
+        border: 2px solid #3a5542;
+    }
+
+    #progressBarInner {
+        background: #7fe092;
+        height: 11px;
+        border-radius: 10px;
+    }
+
+    #level {
+        text-align: center;
+        font-family: 'Open Sans', sans-serif;
+        color: #000;
+        font-size: 9px;
+        height: 11px;
+        margin-top: -12px;
+        font-weight: 700;
+        letter-spacing: 0.075em;
+    }
+
+    #tag {
+        text-align: center;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 15px;
+        color: #333;
+        letter-spacing: 0.075em;
+        margin-top: 35px;
+        margin-bottom: 40px;
+    }
+
+    .discoverybtn {
+        margin-bottom: 15px;
+        height: 37px;
+        color: #222;
+        font-family: 'gooddog_plainregular';
+        font-size: 15px;
+        letter-spacing: 0.075em;
+        &:last-of-type {
+            margin-bottom: 0px;
+        }
+    }
+
+    .mammals {
+        background-image: url(../assets/img/home/mammals.png);
+        background-size: 20px; 
+        background-repeat: no-repeat;
+        background-position-x: 15px;
+        background-position-y: 9px;
+    }
+
+    .birds {
+        background-image: url(../assets/img/home/birds.png);
+        background-size: 20px; 
+        background-repeat: no-repeat;
+        background-position-x: 15px;
+        background-position-y: 13px;
+    }
+
+    .reptiles {
+        background-image: url(../assets/img/home/reptiles.png);
+        background-size: 20px; 
+        background-repeat: no-repeat;
+        background-position-x: 15px;
+        background-position-y: 9px;
+    }
+
+    .invertebrates {
+        background-image: url(../assets/img/home/inverts.png);
+        background-size: 20px; 
+        background-repeat: no-repeat;
+        background-position-x: 15px;
+        background-position-y: 6px;      
+    }
+
+    #creatureCanvas {
+        background: #259e39;
+        width: 100%;
+        margin-top: 50px;
+        padding-top: 10px;
+        padding-bottom: 30px;
+    }
+
+    .content-inner p, #newResidents p {
+        text-align: center;
+        color: #FFF;
+        font-family: 'gooddog_plainregular';
+        font-size: 20px;
+        letter-spacing: 0.075em;
+    }
+
+    .canvasImage {
+        border-radius: 50%;
+        border: 3px solid #33c217;
+        width: 102px;
+        -webkit-box-shadow: 10px 10px 14px -9px rgba(0,0,0,0.75);
+        -moz-box-shadow: 10px 10px 14px -9px rgba(0,0,0,0.75);
+        box-shadow: 10px 10px 14px -9px rgba(0,0,0,0.75);
+        z-index: -1;
+        position: relative;
+    }
+
+    .canvasOverlay {
+        border-radius: 50%;
+        position: relative;
+        width: 102px;
+        height: 102px;
+        margin: 0 auto;
+        background: #259e39;
+        margin-top: -105px;
+        z-index: 1;
+        opacity: 0.7;
+        padding: 15px;
+        p {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 10px;
+            text-transform: uppercase;
+            margin-top: 0px;
+        }
+    }
+
+    .canvasButton {
+        height: 34px;
+        text-align: center;
+        border-radius: 0px;
+        margin: 0px ;
+        margin-top: 16px ;
+        padding: 11px 0px ;
+        font-family: 'gooddog_plainregular';
+        font-size: 15px;
+        letter-spacing: 0.075em;
+   }
+
+   #newResidents {
+       margin-top: 35px;
+       p {
+            color: #222;
+        }
+   }
+
+   .newResidentImage {
+       width: 100%;
+       height: 100px;
+       background-size: cover;
+       background-repeat: no-repeat;
+       background-position-y: center;
+   }
+
+   .newResidentText {
+       font-size: 11px !important;
+       font-family: 'Open Sans', sans-serif !important;
+       text-align: justify !important;
+   }
+   
+   .card-title-ios {
+       font-family: 'gooddog_plainregular';
+       font-variant: small-caps;
+       font-size: 30px;
+       line-height: 0.5;
+       letter-spacing: 0.050em;
+   }
+
+   #donate {
+       background-color: #222;
+       padding-top: 21px;
+       padding-bottom: 21px;
+       p {
+           color: #33c217;
+           font-family: 'Open Sans', sans-serif;
+           font-variant: small-caps;
+           font-size: 11px;
+           font-weight: 700;
+           text-align: center;
+       }
+   }
 }
