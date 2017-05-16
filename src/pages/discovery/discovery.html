@@ -1,18 +1,33 @@
-<!--
-  Generated template for the Discovery page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
+<!-- Fixed Menu Header -->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>discovery</ion-title>
+    <img id="NavLogo" src="assets/img/home/NavLogo.png"/>
+    <button ion-button end menuToggle>
+      <ion-icon name="menu" color="dark"></ion-icon>
+    </button>
   </ion-navbar>
-
 </ion-header>
 
+<ion-content>
 
-<ion-content padding>
+  <!-- Discovery Heading -->
+  <div id="heading" [ngStyle]="{'background-image': 'url(' + sectionBack + ')'}">
+    <p>{{title}}</p>
+    <p>
+      {{intro}}
+    </p>
+  </div>
+
+  <!-- Find a Profile -->
+  <button id="findButton" ion-button color="secondary" (click)="DiscoveryFind($event, section)">
+    <ion-icon name="search"></ion-icon>
+  </button>
+  <p>Find a {{plural}}</p>
+
+  <!-- Quiz -->
+  <button id="quizButton" ion-button color="secondary" (click)="DiscoveryQuiz($event, section)">
+    <ion-icon name="help"></ion-icon>
+  </button>
+  <p>Try our {{section}} quiz</p>
 
 </ion-content>

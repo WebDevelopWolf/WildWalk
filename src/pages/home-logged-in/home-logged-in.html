@@ -26,9 +26,9 @@
 
     <!-- Discovery Link Buttons -->
     <button ion-button full class="discoverybtn mammals" color="mammals" (click)="Discovery($event, 'mammals')">Mammals</button>
-    <button ion-button full class="discoverybtn birds" color="birds" (click)="Discovery('birds')">Birds</button>
-    <button ion-button full class="discoverybtn reptiles" color="reptiles" (click)="Discovery('reptiles')">Reptiles</button>
-    <button ion-button full class="discoverybtn invertebrates" color="inverts" (click)="Discovery('invertebrates')">Invertebrates</button>
+    <button ion-button full class="discoverybtn birds" color="birds" (click)="Discovery($event, 'birds')">Birds</button>
+    <button ion-button full class="discoverybtn reptiles" color="reptiles" (click)="Discovery($event, 'reptiles')">Reptiles</button>
+    <button ion-button full class="discoverybtn invertebrates" color="inverts" (click)="Discovery($event, 'invertebrates')">Invertebrates</button>
   </div> <!-- /content-inner>-->
 
   <!-- Creature Canvas -->
@@ -39,28 +39,10 @@
 
       <!-- Slider -->
       <ion-slides (ionSlideDidChange)="hideOverlay()">
-        <ion-slide (click)="showOverlay()">
-          <img class="canvasImage" src="assets/img/gallery/1.png" />
+        <ion-slide *ngFor="let canvas of canvases" (click)="showOverlay()">
+          <img class="canvasImage" src="{{canvas.Image}}" />
           <div *ngIf="display" class="canvasOverlay">
-            <p>Alfie and Me</p>
-            <p>Liane</p>
-            <p>12/03/17</p>
-          </div>
-        </ion-slide>
-        <ion-slide (click)="showOverlay()">
-          <img class="canvasImage" src="assets/img/gallery/1.png" />
-          <div *ngIf="display" class="canvasOverlay">
-            <p>Alfie and Me</p>
-            <p>Liane</p>
-            <p>12/03/17</p>
-          </div>
-        </ion-slide>
-        <ion-slide (click)="showOverlay()">
-          <img class="canvasImage" src="assets/img/gallery/1.png" />
-          <div *ngIf="display" class="canvasOverlay">
-            <p>Alfie and Me</p>
-            <p>Liane</p>
-            <p>12/03/17</p>
+            <p>{{canvas.Name}}</p>
           </div>
         </ion-slide>
       </ion-slides>
@@ -72,43 +54,18 @@
 
   <!-- New Residents -->
   <div id="newResidents">
+
     <p>Say Hi to the New Guys!</p>
 
     <!-- New Resident -->
-    <ion-card color="mammals">
-      <div class="newResidentImage" style="background-image: url(../assets/img/mammals/hero/1.jpg);"></div>
+    <ion-card *ngFor="let resident of newResidents" color="{{resident.Discoveryid}}">
+      <div class="newResidentImage" [ngStyle]="{'background-image': 'url(' + resident.Picture + ')'}"></div>
       <ion-card-content>
           <ion-card-title>
-            Annie
+            {{resident.Name}}
           </ion-card-title>
           <p class="newResidentText">
-            Annies story will be told here in a few short paragraphs and it will be all about how she started life at the centre. Some of these stories have bad starts but have a very happy ending.
-          </p>
-      </ion-card-content>
-    </ion-card><!-- New Resident -->
-
-    <!-- New Resident -->
-    <ion-card color="reptiles">
-      <div class="newResidentImage" style="background-image: url(../assets/img/mammals/hero/2.jpg);"></div>
-      <ion-card-content>
-          <ion-card-title>
-            Lucius
-          </ion-card-title>
-          <p class="newResidentText">
-            Lu was my snake really but he was so awesome he gets a spot on here because he deserves to be rememberes, my little ladies man. His story has a happy start and is mostly happy thoughout, my little best bud!
-          </p>
-      </ion-card-content>
-    </ion-card><!-- New Resident -->
-
-    <!-- New Resident -->
-    <ion-card color="mammals">
-      <div class="newResidentImage" style="background-image: url(../assets/img/mammals/hero/1.jpg);"></div>
-      <ion-card-content>
-          <ion-card-title>
-            Annie
-          </ion-card-title>
-          <p class="newResidentText">
-            Annies story will be told here in a few short paragraphs and it will be all about how she started life at the centre. Some of these stories have bad starts but have a very happy ending.
+            {{resident.Story}}
           </p>
       </ion-card-content>
     </ion-card><!-- New Resident -->

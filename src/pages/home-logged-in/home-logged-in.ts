@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, LoadingController, Slides } from '
 
 import { WildWalkApi } from "../../app/shared/shared";
 import { Discovery } from '../discovery/discovery';
+import { gallery, profile } from '../../assets/js/classes.ts';
 
 @IonicPage()
 @Component({
@@ -11,15 +12,14 @@ import { Discovery } from '../discovery/discovery';
 })
 export class HomeLoggedIn {
 
-  //public login: any;
-  //public repos = [];
+  public login: any;
   username: any = sessionStorage['name'];
   userImage: any;
   userLevel = 4;
   userExp = 50;
   display = false;
-  
-
+  canvases = [];
+  newResidents: Array<profile>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private wwapi: WildWalkApi, private loadingController: LoadingController) {
   }
@@ -27,12 +27,17 @@ export class HomeLoggedIn {
   ionViewDidLoad() {
     console.log('ionViewDidLoad HomeLoggedIn - User Session Owner: ' + sessionStorage['name']);
 
-    // JSON API Load
-    //this.wwapi.getLoginTest().then(data => this.login = data).then(data => console.log(this.login));
-    //let selectedUser = 'WebDevelopWolf';
-    //this.wwapi.getRepoData(selectedUser).subscribe(data => {
-      ///this.repos = data.items;
-    //});
+    // Get Gallery JSON
+    this.wwapi.getRepoData('dashboard/Gallery').subscribe(data => {
+      this.canvases = data;
+      console.log(this.canvases);
+    });
+
+    // Get New Resident JSON
+    this.wwapi.getRepoData('dashboard/NewResidents').subscribe(data => {
+      this.newResidents = data;
+      console.log(this.newResidents);
+    });
 
     // Populate User Pic
     this.userImage = this.getUserPic();
@@ -79,15 +84,15 @@ export class HomeLoggedIn {
     }
   }
 
+  // Hide the green overlay on Gallery images
   hideOverlay() {
     this.display = false;
   }
 
-  // Load 10 Random Gallery Images
-
-  // Load New Residents
-
-  // Link New Residents
+  // Wire up the 'moments' button
+  addGallery() {
+    // Add gallery link when page is built
+  }
 
   // Wire up donate button
   donate() {

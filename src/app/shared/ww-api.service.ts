@@ -6,21 +6,13 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class WildWalkApi {
 
-    private baseUrl = 'https://i2test-ea07c.firebaseio.com/';
-    private gitUrl = "https://api.github.com/search/repositories?q=user:";
+    private baseUrl = 'http://localhost:52877/api/';
     currentRepos: any = {};
 
     constructor(private http: Http) {}
 
-    getLoginTest(){
-        return new Promise(resolve => {
-            this.http.get(this.baseUrl + 'login.json')
-                .subscribe(res => resolve(res.json()));
-        });
-    }
-
-    getRepoData(login) : Observable<any> {
-        return this.http.get(this.gitUrl + login)
+    getRepoData(url) : Observable<any> {
+        return this.http.get(this.baseUrl + url)
             .map((response: Response) => {
                 this.currentRepos = response.json();
                 return this.currentRepos;

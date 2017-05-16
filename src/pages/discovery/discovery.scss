@@ -1,3 +1,60 @@
 page-discovery {
+    #heading {
+        padding: 60px 15px 23px 15px;
+        height: 163px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        p {
+            letter-spacing: 0.075em;
+            font-variant: small-caps;
+            font-weight: 700;
+            text-align: justify;
+            margin-top: 0px;
+            margin-bottom: 0px;
+            &:first-of-type {
+                font-size: 30px;
+                font-family: 'gooddog_plainregular';
+                color: #FFF;
+                text-shadow: 2px 2px 2px rgba(100, 100, 100, 1);
+            }
+            &:last-of-type{
+                font-size: 8px;
+                font-family: 'Open Sans', sans-serif;
+                color: #000;
+            }
+        }
+    }
 
+    .scroll-content {
+        text-align: center;
+    }
+
+    p {
+        font-size: 12px;
+        font-family: 'Open Sans', sans-serif;
+        color: #000; 
+        letter-spacing: 0.075em;
+        font-variant: small-caps;
+        font-weight: 700;
+        text-align: justify;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        text-align: center;
+        &:first-of-type {
+            margin-bottom: 12px;
+        }
+    }
+
+    #findButton, #quizButton {
+       width: 105px;
+       height: 105px;
+       border-radius: 50%;
+       color: #e7e7e7; 
+       margin: 0 auto;
+       margin-top: 21px;
+       margin-bottom:21px;
+       text-align: center;
+       font-size: 36px;
+       font-weight: 700;
+    }
 }
