@@ -10,7 +10,25 @@
 
 
 <ion-content>
-  <div id="search-bar">
-    <ion-icon name="search"></ion-icon> <input id="search" type="text" placeholder="search" />
-  </div>
+  <ion-list>
+    <ion-list-header>Gentleshaw {{section}}</ion-list-header>
+    <ion-toolbar>
+      <ion-searchbar placeholder="search" [(ngModel)]="queryResidents" (ionInput)="updateResidents()"></ion-searchbar>
+    </ion-toolbar>
+    <ion-item-group *ngFor="let species of residents">
+      <ion-item-divider class="species-divider" color="{{section}}">{{species.SpeciesName}}</ion-item-divider>
+      <ion-item *ngFor="let resident of species.Species" class="resident-item">
+        <ion-avatar item-left>
+          <img src="{{resident.Picture}}">
+        </ion-avatar>
+        <div class="name-species">
+          <p>{{resident.Species}}</p>
+          <h2>{{resident.Name}}</h2>
+        </div>
+        <div class="favourite">
+          <ion-icon name="heart" (click)="addToFav(resident.Profileid, 1, resident.Name)"></ion-icon>
+        </div>
+      </ion-item>
+    </ion-item-group>
+  </ion-list>
 </ion-content>

@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class WildWalkApi {
 
-    private baseUrl = 'http://localhost:52877/api/';
+    public baseUrl = 'http://localhost:52877/api/';
     currentRepos: any = {};
 
     constructor(private http: Http) {}
