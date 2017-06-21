@@ -4,6 +4,7 @@ import * as _ from 'lodash';
 
 import { WildWalkApi } from "../../app/shared/shared";
 import { Headers, RequestOptions, Http } from "@angular/http";
+import { DiscoveryResident } from '../discovery-resident/discovery-resident';
 
 @IonicPage()
 @Component({
@@ -78,5 +79,11 @@ export class DiscoveryFind {
       buttons: ['Ok']
     });
     alert.present();
+  }
+
+  // Wire up Residents
+  DiscoveryResident($event, profileid) {
+    console.log(profileid);
+    this.navCtrl.setRoot(DiscoveryResident, profileid);
   }
 }

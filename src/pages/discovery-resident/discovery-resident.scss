@@ -1,0 +1,45 @@
+page-discovery-resident {
+    .breadcrumbs {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 9px;
+        text-transform: lowercase;
+        font-variant: small-caps;
+        color: #E7E7E7;
+        letter-spacing: 0.075em;
+        height: 26px;
+        background: #222;
+        padding: 6px;
+        padding-left: 15px;
+    }
+    .residentImage {
+        height: 108px;
+        background-size:cover;
+        background-position-y: center;
+    }
+    .title {
+        height: 31px;
+        font-family: 'gooddog_plainregular';
+        font-size: 30px;
+        font-variant: small-caps;
+        font-weight: 700;
+        color: #E7E7E7;
+        letter-spacing: 0.075em;
+        background: #222;
+        padding: 1px;
+        padding-left: 15px;
+    }
+    .intro {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 11px;
+        color: #222;
+        letter-spacing: 0.075em;
+        background: #E7E7E7;
+        padding: 6px;
+        padding-left: 15px;
+        padding-right: 15px;
+        text-align: justify;
+        span {
+            color: #33c217;
+        }
+    }
+}

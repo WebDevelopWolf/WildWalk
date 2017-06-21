@@ -1,0 +1,28 @@
+<!-- Fixed Menu Header -->
+<ion-header>
+  <ion-navbar>
+    <img id="NavLogo" src="assets/img/home/NavLogo.png"/>
+    <button ion-button end menuToggle>
+      <ion-icon name="menu" color="dark"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+<div class="breadcrumbs">Home · {{section}} · {{name}}</div>
+<div class="residentImage" [ngStyle]="{'background-image': 'url(' + picture + ')'}">
+  <ion-icon name="ion-thumbsup" color="dark"></ion-icon>
+  <ion-icon name="ion-chatbox" color="dark"></ion-icon>
+  <ion-icon name="ion-heart" color="dark"></ion-icon>
+</div>
+<div class="title">{{name}}</div>
+<div class="intro">
+  <p>{{about}}</p>
+  <p><span>{{name}}</span> is <span>{{age}}</span> year old and 
+  in the wild can live up to <span>{{ageInWild}}</span> years old. 
+    At the centre she eats <span>{{food}}</span>, but in the wild might eat 
+    <span>{{foodInWild}}</span>. The average weight of a skunk is 
+    <span>{{weight}}kg</span> and they can grow up to <span>{{height}}</span>.</p>
+</div>
+</ion-content>

@@ -10,6 +10,7 @@ import { HomeLoggedIn } from '../pages/home-logged-in/home-logged-in';
 import { Register } from '../pages/register/register';
 import { Discovery } from '../pages/discovery/discovery';
 import { DiscoveryFind } from '../pages/discovery-find/discovery-find';
+import { DiscoveryResident } from '../pages/discovery-resident/discovery-resident';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -25,7 +26,8 @@ import { HttpModule } from "@angular/http";
     HomeLoggedIn,
     Register,
     Discovery,
-    DiscoveryFind
+    DiscoveryFind,
+    DiscoveryResident
   ],
   imports: [
     BrowserModule,
@@ -41,7 +43,8 @@ import { HttpModule } from "@angular/http";
     HomeLoggedIn,
     Register,
     Discovery,
-    DiscoveryFind
+    DiscoveryFind,
+    DiscoveryResident
   ],
   providers: [
     StatusBar,

@@ -17,7 +17,7 @@
     </ion-toolbar>
     <ion-item-group *ngFor="let species of residents">
       <ion-item-divider class="species-divider" color="{{section}}">{{species.SpeciesName}}</ion-item-divider>
-      <ion-item *ngFor="let resident of species.Species" class="resident-item">
+      <ion-item *ngFor="let resident of species.Species" class="resident-item" (click)="DiscoveryResident($event, resident.Profileid)">
         <ion-avatar item-left>
           <img src="{{resident.Picture}}">
         </ion-avatar>
