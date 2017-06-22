@@ -10,19 +10,43 @@
 
 
 <ion-content>
-<div class="breadcrumbs">Home · {{section}} · {{name}}</div>
-<div class="residentImage" [ngStyle]="{'background-image': 'url(' + picture + ')'}">
-  <ion-icon name="ion-thumbsup" color="dark"></ion-icon>
-  <ion-icon name="ion-chatbox" color="dark"></ion-icon>
-  <ion-icon name="ion-heart" color="dark"></ion-icon>
-</div>
-<div class="title">{{name}}</div>
-<div class="intro">
-  <p>{{about}}</p>
-  <p><span>{{name}}</span> is <span>{{age}}</span> year old and 
-  in the wild can live up to <span>{{ageInWild}}</span> years old. 
-    At the centre she eats <span>{{food}}</span>, but in the wild might eat 
-    <span>{{foodInWild}}</span>. The average weight of a skunk is 
-    <span>{{weight}}kg</span> and they can grow up to <span>{{height}}</span>.</p>
-</div>
+
+  <div class="breadcrumbs">Home · {{section}} · {{name}}</div>
+  
+  <div class="residentImage" [ngStyle]="{'background-image': 'url(' + picture + ')'}">
+    <ion-icon name="ion-thumbsup" color="dark"></ion-icon>
+    <ion-icon name="ion-chatbox" color="dark"></ion-icon>
+    <ion-icon name="ion-heart" color="dark"></ion-icon>
+  </div>
+  
+  <div class="title">{{name}}</div>
+  
+  <div class="intro">
+    <p>{{about}}</p>
+    <p><span>{{name}}</span> is <span>{{age}}</span> year old and 
+    in the wild can live up to <span>{{ageInWild}}</span> years old. 
+      At the centre she eats <span>{{food}}</span>, but in the wild might eat 
+      <span>{{foodInWild}}</span>. The average weight of a skunk is 
+      <span>{{avgWeight}}kg</span> and they can grow up to <span>{{avgHeight}}</span> foot.</p>
+  </div>
+  
+  <div class="at-a-glance">
+      <div class="human"></div>
+      <div class="sizegraphic" [ngStyle]="{'background-image': 'url(' + sizegraphic + ')'}"></div>
+      <div class="stats">
+        <span class="stats-title">{{name}}'s stats</span>
+        <p><span>Height:</span> {{height}} ft</p>
+        <p><span>Weight:</span> {{weight}} kg</p>
+        <p><span>Habitat:</span> {{habitat}}</p>
+      </div>
+  </div>
+
+  <div class="intro">
+      {{story}}
+  </div>
+
+  <div class="did-you-know">
+    
+  </div>
+
 </ion-content>

@@ -25,6 +25,11 @@ export class DiscoveryResident {
   height: any;
   weight: any;
   about: any;
+  habitat:any;
+  avgHeight: any;
+  avgWeight: any;
+  sizegraphic: any;
+  story: any; 
 
   constructor(public navCtrl: NavController, private wwapi: WildWalkApi, public navParams: NavParams, private http: Http) {
     this.id = this.navParams.data;
@@ -48,6 +53,11 @@ export class DiscoveryResident {
         this.height = data.Height;
         this.weight = data.Weight;
         this.about = data.About;
+        this.habitat = data.Habitat;
+        this.avgHeight = data.Avgheight;
+        this.avgWeight = data.Avgweight;
+        this.sizegraphic = data.Sizegraphic;
+        this.story = data.Story;
       });
   }
 

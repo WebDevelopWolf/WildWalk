@@ -42,4 +42,45 @@ page-discovery-resident {
             color: #33c217;
         }
     }
+    .at-a-glance {
+        background: #222;
+        height: 125px;
+        padding: 15px;
+        padding-bottom: 0px;
+        overflow: auto;
+        margin-top: 8px;
+        margin-bottom: 45px;
+        .human {
+            background-image: url(../assets/img/discovery/human.png);
+            height: 115px;
+            width: 53px;
+            float: left;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .sizegraphic {
+            height: 111px;
+            width: 75px;
+            float: left;
+            background-repeat: no-repeat;
+            background-size: 100%;
+            background-position-y: bottom;
+            background-position-x: left;
+            margin-left: 5px;
+        }
+        .stats {
+            text-align: right;
+            text-transform: uppercase;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 11px;
+            color: #E7E7E7;
+            letter-spacing: 0.075em;
+            .stats-title {
+                color: #33c217;
+            }
+            span {
+                color: #535050;
+            }
+        }
+    }
 }
