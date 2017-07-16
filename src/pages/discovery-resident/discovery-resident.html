@@ -14,9 +14,8 @@
   <div class="breadcrumbs">Home · {{section}} · {{name}}</div>
   
   <div class="residentImage" [ngStyle]="{'background-image': 'url(' + picture + ')'}">
-    <ion-icon name="ion-thumbsup" color="dark"></ion-icon>
-    <ion-icon name="ion-chatbox" color="dark"></ion-icon>
-    <ion-icon name="ion-heart" color="dark"></ion-icon>
+    <ion-icon class="resident-icon" name="thumbs-up" (click)="likeResident()"></ion-icon>
+    <ion-icon class="resident-icon" name="heart" (click)="addToFav()"></ion-icon>
   </div>
   
   <div class="title">{{name}}</div>
@@ -46,7 +45,23 @@
   </div>
 
   <div class="did-you-know">
-    
+    Did you know?
+    <ul>
+      <li *ngFor="let dyk of didyouknow">
+        {{dyk.Fact}}
+      </li>
+    </ul>
+  </div>
+
+  <div class="adopt">
+    <div class="adopt-img">
+      <img class="adopt-img-reverse" src="{{sizegraphic}}" />
+    </div>
+    <div class="adopt-button">
+      <span>Want to get to know {{name}} better?</span>
+      <span class="call-small">Why not adopt?</span>
+      <button>Adopt {{name}}</button>
+    </div>
   </div>
 
 </ion-content>

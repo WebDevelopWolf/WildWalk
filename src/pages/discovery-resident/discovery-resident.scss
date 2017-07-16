@@ -15,6 +15,14 @@ page-discovery-resident {
         height: 108px;
         background-size:cover;
         background-position-y: center;
+        text-align: right;
+        padding:10px;
+        padding-right: 27px;
+        .resident-icon {
+            color: #E7E7E7;
+            margin-left: 8px;
+            font-size: 25px !important;
+        }
     }
     .title {
         height: 31px;
@@ -44,7 +52,7 @@ page-discovery-resident {
     }
     .at-a-glance {
         background: #222;
-        height: 125px;
+        height: 130px;
         padding: 15px;
         padding-bottom: 0px;
         overflow: auto;
@@ -52,14 +60,15 @@ page-discovery-resident {
         margin-bottom: 45px;
         .human {
             background-image: url(../assets/img/discovery/human.png);
-            height: 115px;
+            height: 118px;
             width: 53px;
             float: left;
             background-repeat: no-repeat;
             background-size: cover;
+            background-position-x: -25px;
         }
         .sizegraphic {
-            height: 111px;
+            height: 114px;
             width: 75px;
             float: left;
             background-repeat: no-repeat;
@@ -80,6 +89,68 @@ page-discovery-resident {
             }
             span {
                 color: #535050;
+            }
+        }
+    }
+    .did-you-know {
+            background: #259e39;
+            padding: 15px;
+            color: #E7E7E7;
+            text-transform: uppercase;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 11px;
+            letter-spacing: 0.075em;
+            margin-top: 45px;
+            ul {
+                margin-top: 15px;
+                padding: 15px;
+                padding-top: 0px;
+                padding-bottom: 0px;
+                li {
+                    list-style-image: url(../assets/img/discovery/list.png);
+                    color: #222;
+                    text-transform: none;
+                    margin-bottom: 10px;
+                }
+            }
+    }
+    .adopt {
+        .adopt-img {
+            text-align: right;
+            margin-top: 45px;
+            .adopt-img-reverse {
+                -webkit-filter: invert(1);
+                filter: invert(1);
+                width: 25%;
+                margin-right: 15px;
+            }
+        }
+        .adopt-button {
+            background: #222;
+            font-family: 'gooddog_plainregular';
+            color: #259e39;
+            font-size: 18px;
+            text-align: center;
+            padding: 15px;
+            letter-spacing: 0.050em;
+            margin-top:-5px;
+            span {
+                display: block;
+                margin-bottom: 5px;
+            }
+            .call-small {
+                font-size: 17px;
+            }
+            button {
+                width: 100%;
+                background: #259e39;
+                color: #222;
+                text-align: center;
+                border: 0;
+                font-size: 18px;
+                padding: 8px;
+                margin-top: 8px;
+                letter-spacing: 0.050em;
             }
         }
     }
