@@ -1,0 +1,44 @@
+<!-- Fixed Menu Header -->
+<ion-header>
+  <ion-navbar>
+    <img id="NavLogo" src="assets/img/home/NavLogo.png"/>
+    <button ion-button end menuToggle>
+      <ion-icon name="menu" color="dark"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+
+  <!-- Quiz Heading -->
+  <div id="heading" [ngStyle]="{'background-image': 'url(' + HeaderImage + ')'}">
+    <p>{{title}}</p>
+    <p>
+      {{intro}}
+    </p>
+  </div>
+
+  <!-- Scores -->
+  <div class="scores">
+    <div class="top-score">
+      <p>Top Score</p>
+      {{topScore}}
+    </div>
+    <div class="user-score">
+      <p>{{user}}'s Score</p>
+      {{userScore}}
+    </div>
+  </div>
+
+  <!-- Play Button -->
+  <div class="play">
+    <button class="play-btn">Play</button>
+  </div>
+
+  <!-- Leaderboard -->
+  <div class="leaderboards">
+
+  </div>
+
+</ion-content>
