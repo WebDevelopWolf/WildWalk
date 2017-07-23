@@ -11,6 +11,7 @@ import { Register } from '../pages/register/register';
 import { Discovery } from '../pages/discovery/discovery';
 import { DiscoveryFind } from '../pages/discovery-find/discovery-find';
 import { DiscoveryResident } from '../pages/discovery-resident/discovery-resident';
+import { QuizHome } from '../pages/quiz-home/quiz-home';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -27,7 +28,8 @@ import { HttpModule } from "@angular/http";
     Register,
     Discovery,
     DiscoveryFind,
-    DiscoveryResident
+    DiscoveryResident,
+    QuizHome
   ],
   imports: [
     BrowserModule,
@@ -44,7 +46,8 @@ import { HttpModule } from "@angular/http";
     Register,
     Discovery,
     DiscoveryFind,
-    DiscoveryResident
+    DiscoveryResident,
+    QuizHome
   ],
   providers: [
     StatusBar,

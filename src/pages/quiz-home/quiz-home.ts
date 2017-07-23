@@ -1,12 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the QuizHome page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+import { WildWalkApi } from "../../app/shared/shared";
+import { Headers, RequestOptions, Http } from "@angular/http";
+
 @IonicPage()
 @Component({
   selector: 'page-quiz-home',
@@ -14,11 +11,34 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class QuizHome {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  section: any;
+  private apiurl : any;
+  title: any;
+  intro: any;
+  headerImage: any;
+  topScore: any;
+  userScore: any;
+  user: any;
+
+  constructor(public navCtrl: NavController, private wwapi: WildWalkApi, public navParams: NavParams) {
+    this.section = this.navParams.data;
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad QuizHome');
+    console.log('ionViewDidLoad - Quiz Home for ' + this.section);
+
+    // Get base quiz data
+    this.apiurl = this.wwapi.baseUrl;
+    this.wwapi.getRepoData('quiz/' + this.section).subscribe(data => {
+      this.title = data.Title;
+      this.intro = data.Intro;
+      this.headerImage = data.HeaderImage;
+    });
+
+    // Dummy User and Scores 
+    this.topScore = 12345;
+    this.userScore = 995;
+    this.user = 'Liane';
   }
 
 }

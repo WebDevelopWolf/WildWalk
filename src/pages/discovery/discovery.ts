@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { DiscoveryFind } from '../discovery-find/discovery-find';
+import { QuizHome } from '../quiz-home/quiz-home';
 
 @IonicPage()
 @Component({
@@ -51,7 +52,7 @@ export class Discovery {
 
   // Wire up Discovery Buttons
   DiscoveryQuiz($event, section) {
-    this.navCtrl.setRoot(Discovery, section);
+    this.navCtrl.setRoot(QuizHome, section);
   }
 
 }
