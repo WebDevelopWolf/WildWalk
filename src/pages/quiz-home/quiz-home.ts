@@ -19,6 +19,8 @@ export class QuizHome {
   topScore: any;
   userScore: any;
   user: any;
+  username: any = sessionStorage['name'];
+  userImage: any;
 
   constructor(public navCtrl: NavController, private wwapi: WildWalkApi, public navParams: NavParams) {
     this.section = this.navParams.data;
@@ -39,6 +41,18 @@ export class QuizHome {
     this.topScore = 12345;
     this.userScore = 995;
     this.user = 'Liane';
+
+    // Populate User Pic
+    this.userImage = this.getUserPic();
+  }
+
+  // Load User Pic 
+  getUserPic() {
+    if (this.username) {
+      return 'assets/img/user/'+ this.username +'/avatar.png';
+    } else {
+      return 'assets/img/user/avatar.png';
+    }
   }
 
 }

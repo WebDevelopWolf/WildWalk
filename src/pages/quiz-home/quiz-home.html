@@ -39,6 +39,27 @@
   <!-- Leaderboard -->
   <div class="leaderboards">
     <p>Leaderboards</p>
+    <div class="leaders-container">
+      <div class="podium second">
+        <img id="userImage" [src]="userImage" />
+        <p id="username">Liane</p>
+        <p id="score">123<span>pts</span></p>
+        <div class="position">2</div>
+      </div>
+      <div class="podium first">
+        <img id="userImage" [src]="userImage" />
+        <p id="username">Liane</p>
+        <p id="score">123<span>pts</span></p>
+        <div class="position">1</div>
+      </div>
+      <div class="podium third">
+        <img id="userImage" [src]="userImage" />
+        <p id="username">Liane</p>
+        <p id="score">123<span>pts</span></p>
+        <div class="position">3</div>
+      </div>
+    </div>
+    <button class="leader-button">View Leaderboards</button>
   </div>
 
 </ion-content>
