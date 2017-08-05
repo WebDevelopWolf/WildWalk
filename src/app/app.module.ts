@@ -12,6 +12,9 @@ import { Discovery } from '../pages/discovery/discovery';
 import { DiscoveryFind } from '../pages/discovery-find/discovery-find';
 import { DiscoveryResident } from '../pages/discovery-resident/discovery-resident';
 import { QuizHome } from '../pages/quiz-home/quiz-home';
+import { QuizQuestion } from '../pages/quiz-question/quiz-question';
+
+import { TimerComponent } from './timer';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -29,7 +32,9 @@ import { HttpModule } from "@angular/http";
     Discovery,
     DiscoveryFind,
     DiscoveryResident,
-    QuizHome
+    QuizHome,
+    QuizQuestion,
+    TimerComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +52,9 @@ import { HttpModule } from "@angular/http";
     Discovery,
     DiscoveryFind,
     DiscoveryResident,
-    QuizHome
+    QuizHome,
+    QuizQuestion,
+    TimerComponent
   ],
   providers: [
     StatusBar,

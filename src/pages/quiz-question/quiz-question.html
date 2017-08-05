@@ -1,0 +1,55 @@
+<!-- Fixed Menu Header -->
+<ion-header>
+  <ion-navbar>
+    <img id="NavLogo" src="assets/img/home/NavLogo.png"/>
+    <button ion-button end menuToggle>
+      <ion-icon name="menu" color="dark"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content class="content" [ngStyle]="{'background-image': 'url(' + headerImage + ')'}">
+  <!-- Quiz Background -->
+  <div class="wrapper">
+
+      <!-- User and their score -->
+      <div class="user-score">
+        <div class="user">
+          <img [src]="userImage" class="avatar"/> liane
+        </div>
+        <div class="score">
+          123<span>pts</span>
+        </div>
+      </div>
+
+      <!-- Question -->
+      <div class="question-container">
+
+          <!-- Progress -->
+          <div class="question-number">
+            1 / 10
+          </div>
+         
+          <!-- Timer -->
+          <div class="timer-container">
+            <div class="timer-back">
+              <div class="timer">&nbsp;</div>
+            </div>
+            <div class="timer-countdown">
+              <timer #timer timeInSeconds="100"></timer>
+            </div>
+          </div>
+          
+          <!-- Question Text -->
+          <p>What breed of dog is Saxon?</p>
+
+          <!-- Answers -->
+          <button type="button" class="answer">Wolfdog</button>
+          <button type="button" class="answer">Wolf</button>
+          <button type="button" class="answer">Singing Dog</button>
+          <button type="button" class="answer">Dog</button>
+
+      </div>
+  </div>
+</ion-content>

@@ -1,0 +1,106 @@
+page-quiz-question {
+    .content {
+        background-size: cover;
+        background-repeat: no-repeat;
+        margin-top: 50px;
+        .fixed-content {
+            margin-top: 0px !important;
+        }
+        .scroll-content {
+            margin-top: 0px !important;
+        }
+        .wrapper {
+            width: 90%;
+            margin: 5%;
+            .user-score {
+                width: 100%;
+                overflow: auto;
+                font-variant: small-caps;
+                text-transform: lowercase;
+                font-size: 24px;
+                font-family: 'gooddog_plainregular';
+                color: #FFF;
+                text-shadow: 2px 2px 2px rgba(100, 100, 100, 1);
+                letter-spacing: 0.075em;
+                .user {
+                    width: 50%;
+                    float: left;
+                    img {
+                        width:50px;
+                        border-radius: 50%;
+                        float: left;
+                        margin-right: 10px;
+                    }
+                }
+                .score {
+                    float: right;
+                    text-align: right;
+                    span {
+                        font-variant: normal;
+                        font-size: 12px;
+                    }
+                }
+            }
+            .question-container {
+                background: #FFF;
+                width: 100%;
+                margin-top: 15px;
+                padding: 16px;
+                text-align: center;
+                font-family: 'Open Sans', sans-serif;
+                overflow: auto;
+                .question-number {
+                    font-size: 6px; 
+                    letter-spacing: 0.075em;
+                    font-weight: bold;
+                    margin-bottom: 10px;
+                }
+                .timer-container {
+                    width: 100%;
+                    .timer-back {
+                        background: #222;
+                        border-radius: 10px;
+                        width: 100%;
+                        .timer {
+                            background: #259e39;
+                            width: 80%;
+                            border-radius: 10px;
+                        }
+                    }
+                }
+                .timer-countdown {
+                    margin-top: -16px;
+                    font-size: 9px;
+                    font-variant: small-caps;
+                    text-transform: uppercase;
+                    color: #FFF;
+                }
+                p {
+                    font-family: 'gooddog_plainregular';
+                    color: #222;
+                    font-weight: bold;
+                    letter-spacing: 0.075em;
+                    font-size: 36px;
+                    margin-top: 80px;
+                    margin-bottom: 80px;
+                }
+                .answer {
+                    font-family: 'gooddog_plainregular';
+                    color: #222;
+                    font-weight: bold;
+                    letter-spacing: 0.075em;
+                    font-size: 22px;
+                    background: #259e39;
+                    color: #FFF;
+                    border-radius: 7px;
+                    padding:9px;
+                    width:45%;
+                    float: left;
+                    margin: 2.5%;
+                    font-variant: small-caps;
+                    text-transform: lowercase;
+                }
+            }
+        }
+    }
+}

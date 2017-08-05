@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { WildWalkApi } from "../../app/shared/shared";
 import { Headers, RequestOptions, Http } from "@angular/http";
+import {QuizQuestion} from '../quiz-question/quiz-question';
 
 @IonicPage()
 @Component({
@@ -29,18 +30,22 @@ export class QuizHome {
   ionViewDidLoad() {
     console.log('ionViewDidLoad - Quiz Home for ' + this.section);
 
+    // Dummy User
+    this.user = 'Liane';
+
     // Get base quiz data
     this.apiurl = this.wwapi.baseUrl;
     this.wwapi.getRepoData('quiz/' + this.section).subscribe(data => {
       this.title = data.Title;
       this.intro = data.Intro;
       this.headerImage = data.HeaderImage;
+      this.wwapi.getRepoData('score/' + this.section + '/' + this.user).subscribe(data => {
+          this.userScore = data.Score_;
+      });
+      this.wwapi.getRepoData('score/' +  this.section).subscribe(data => {
+          this.topScore = data.Score_;
+      });
     });
-
-    // Dummy User and Scores 
-    this.topScore = 12345;
-    this.userScore = 995;
-    this.user = 'Liane';
 
     // Populate User Pic
     this.userImage = this.getUserPic();
@@ -53,6 +58,11 @@ export class QuizHome {
     } else {
       return 'assets/img/user/avatar.png';
     }
+  }
+
+  // Start the Quiz
+  StartQuiz($event, section) {
+    this.navCtrl.setRoot(QuizQuestion, section);
   }
 
 }
