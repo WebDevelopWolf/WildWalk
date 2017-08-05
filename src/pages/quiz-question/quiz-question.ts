@@ -4,6 +4,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { WildWalkApi } from "../../app/shared/shared";
 import { Headers, RequestOptions, Http } from "@angular/http";
 import { TimerComponent } from "../../app/timer";
+import { Observable } from "rxjs/Rx";
 
 @IonicPage()
 @Component({
@@ -23,20 +24,29 @@ export class QuizQuestion {
   noOfQuestions: any;
   question: any;
   questions: any;
+  countdown: any;
 
   constructor(public navCtrl: NavController, private wwapi: WildWalkApi, public navParams: NavParams) {
     this.section = this.navParams.data;
   }
 
-   ngOnInit() {
+  // Start the clock!
+  ngOnInit() {
     setTimeout(() => {
       this.timer.startTimer();
+      this.countdown = 100;
+      Observable.interval(1000).subscribe(x => {
+        if (this.countdown > 0) {
+          this.countdown--;
+        }
+        if (this.countdown === 0) {
+          // Load Next Question
+        }
+      });
     }, 1000)
   }
 
   ionViewDidLoad() {
-    console. log('ionViewDidLoad QuizQuestion');
-
     // Populate User Pic
     this.userImage = this.getUserPic();
   }

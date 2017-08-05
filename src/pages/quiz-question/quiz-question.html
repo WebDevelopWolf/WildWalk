@@ -34,7 +34,7 @@
           <!-- Timer -->
           <div class="timer-container">
             <div class="timer-back">
-              <div class="timer">&nbsp;</div>
+              <div class="timer" [style.width.%]="countdown">&nbsp;</div>
             </div>
             <div class="timer-countdown">
               <timer #timer timeInSeconds="100"></timer>
