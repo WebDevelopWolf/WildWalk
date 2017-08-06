@@ -29,6 +29,7 @@ export class QuizQuestion {
   question: any;
   questions: Array<any>;
   countdown: any;
+  answers: Array<any>;
 
   constructor(public navCtrl: NavController, private wwapi: WildWalkApi, public navParams: NavParams) {
     this.section = this.navParams.data;
@@ -64,6 +65,28 @@ export class QuizQuestion {
       this.questionText = this.question.Question_;
       this.incorrectPrompt = this.question.IncorrectPrompt;
       this.correctPrompt = this.question.CorrectPrompt;
+      // Set first answers
+      this.wwapi.getRepoData('quiz/question/answers/' + this.question.QuestionId).subscribe(data => {
+        this.answers = data;
+        for (let answer of this.answers) {
+          // Generate Answer
+          let parent = <HTMLDivElement>document.getElementById('answers');
+          let button = document.createElement("button");
+          let text = document.createTextNode(answer.AnswerText);
+          button.classList.add('answer');
+          button.appendChild(text);
+          button.setAttribute('id','answer-' + answer.AnswerId);
+          parent.appendChild(button);
+          // Find correct Answer
+          if (answer.Marker) {
+            // Generate Correct Answer
+            this.answerQuestionCorrectly(answer);
+          } else {
+            // Generate Incorrect Answer
+            this.answerQuestionIncorrectly(answer);
+          }
+        }
+      });
     });
 
     // Populate User Pic
@@ -78,5 +101,21 @@ export class QuizQuestion {
       return 'assets/img/user/avatar.png';
     }
   } 
+
+  // Answer Correctly
+  answerQuestionCorrectly(answer) {
+    let answerButton = <HTMLButtonElement>document.getElementById('answer-' + answer.AnswerId);
+    answerButton.addEventListener('click', (event) => {
+      //your code here
+    });
+  }
+
+  // Answer Incorrectly
+  answerQuestionIncorrectly(answer) {
+    let answerButton = <HTMLButtonElement>document.getElementById('answer-' + answer.AnswerId);
+    answerButton.addEventListener('click', (event) => {
+      //your code here
+    });
+  }
 
 }
