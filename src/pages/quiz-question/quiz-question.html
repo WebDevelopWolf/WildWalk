@@ -16,7 +16,7 @@
       <!-- User and their score -->
       <div class="user-score">
         <div class="user">
-          <img [src]="userImage" class="avatar"/> liane
+          <img [src]="userImage" class="avatar"/> {{username}}
         </div>
         <div class="score">
           123<span>pts</span>
@@ -28,7 +28,7 @@
 
           <!-- Progress -->
           <div class="question-number">
-            1 / 10
+            {{questionNo}} / {{noOfQuestions}}
           </div>
          
           <!-- Timer -->
@@ -42,7 +42,7 @@
           </div>
           
           <!-- Question Text -->
-          <p>What breed of dog is Saxon?</p>
+          <p>{{questionText}}</p>
 
           <!-- Answers -->
           <button type="button" class="answer">Wolfdog</button>

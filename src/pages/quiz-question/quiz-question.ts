@@ -16,14 +16,18 @@ export class QuizQuestion {
   @ViewChild(TimerComponent) timer: TimerComponent;
 
   section: any;
+  private apiurl : any;
   headerImage: any = "assets/img/quiz/heading/mammals-question.png";
   userImage: any;
   username: any = sessionStorage['name'];
   currentScore: any;
   questionNo: any;
   noOfQuestions: any;
+  questionText: any;
+  incorrectPrompt: any;
+  correctPrompt: any;
   question: any;
-  questions: any;
+  questions: Array<any>;
   countdown: any;
 
   constructor(public navCtrl: NavController, private wwapi: WildWalkApi, public navParams: NavParams) {
@@ -35,7 +39,9 @@ export class QuizQuestion {
     setTimeout(() => {
       this.timer.startTimer();
       this.countdown = 100;
+      // Decrease the timer bar in sync with the timer
       Observable.interval(1000).subscribe(x => {
+        // Stop the clock!
         if (this.countdown > 0) {
           this.countdown--;
         }
@@ -47,6 +53,19 @@ export class QuizQuestion {
   }
 
   ionViewDidLoad() {
+    // Get quiz questions
+    this.apiurl = this.wwapi.baseUrl;
+    this.wwapi.getRepoData('quiz/questions/' + this.section).subscribe(data => {
+      // Set first question
+      this.questions = data;
+      this.question = data[0];
+      this.questionNo = 1;
+      this.noOfQuestions = Object.keys(this.questions).length;
+      this.questionText = this.question.Question_;
+      this.incorrectPrompt = this.question.IncorrectPrompt;
+      this.correctPrompt = this.question.CorrectPrompt;
+    });
+
     // Populate User Pic
     this.userImage = this.getUserPic();
   }
