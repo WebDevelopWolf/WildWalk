@@ -16,7 +16,6 @@ export class QuizQuestion {
   @ViewChild(TimerComponent) timer: TimerComponent;
 
   section: any;
-  private apiurl : any;
   headerImage: any = "assets/img/quiz/heading/mammals-question.png";
   userImage: any;
   username: any = sessionStorage['name'];
@@ -30,63 +29,23 @@ export class QuizQuestion {
   questions: Array<any>;
   countdown: any;
   answers: Array<any>;
+  questionIncriment: any;
 
   constructor(public navCtrl: NavController, private wwapi: WildWalkApi, public navParams: NavParams) {
     this.section = this.navParams.data;
   }
 
-  // Start the clock!
   ngOnInit() {
-    setTimeout(() => {
-      this.timer.startTimer();
-      this.countdown = 100;
-      // Decrease the timer bar in sync with the timer
-      Observable.interval(1000).subscribe(x => {
-        // Stop the clock!
-        if (this.countdown > 0) {
-          this.countdown--;
-        }
-        if (this.countdown === 0) {
-          // Load Next Question
-        }
-      });
-    }, 1000)
+    // Set Incriment
+    this.questionIncriment = 0;
   }
 
   ionViewDidLoad() {
-    // Get quiz questions
-    this.apiurl = this.wwapi.baseUrl;
     this.wwapi.getRepoData('quiz/questions/' + this.section).subscribe(data => {
-      // Set first question
+      // Set question
       this.questions = data;
-      this.question = data[0];
-      this.questionNo = 1;
-      this.noOfQuestions = Object.keys(this.questions).length;
-      this.questionText = this.question.Question_;
-      this.incorrectPrompt = this.question.IncorrectPrompt;
-      this.correctPrompt = this.question.CorrectPrompt;
-      // Set first answers
-      this.wwapi.getRepoData('quiz/question/answers/' + this.question.QuestionId).subscribe(data => {
-        this.answers = data;
-        for (let answer of this.answers) {
-          // Generate Answer
-          let parent = <HTMLDivElement>document.getElementById('answers');
-          let button = document.createElement("button");
-          let text = document.createTextNode(answer.AnswerText);
-          button.classList.add('answer');
-          button.appendChild(text);
-          button.setAttribute('id','answer-' + answer.AnswerId);
-          parent.appendChild(button);
-          // Find correct Answer
-          if (answer.Marker) {
-            // Generate Correct Answer
-            this.answerQuestionCorrectly(answer);
-          } else {
-            // Generate Incorrect Answer
-            this.answerQuestionIncorrectly(answer);
-          }
-        }
-      });
+      // Get first question
+      this.loadQuestion();
     });
 
     // Populate User Pic
@@ -102,11 +61,82 @@ export class QuizQuestion {
     }
   } 
 
+  // Start Timer
+  setTimer() {
+    setTimeout(() => {
+      this.timer.startTimer();
+      this.countdown = 100;
+      // Decrease the timer bar in sync with the timer
+      Observable.interval(1000).subscribe(x => {
+        // Stop the clock!
+        if (this.countdown > 0) {
+          this.countdown--;
+        }
+        if (this.countdown === 0) {
+          // Load Next Question
+          this.timer.initTimer();
+          this.loadQuestion();
+        }
+      });
+    }, 1000)
+  }
+
+  // Set answers
+  setAnswers() {
+    // Set answers
+      this.wwapi.getRepoData('quiz/question/answers/' + this.question.QuestionId).subscribe(data => {
+        this.answers = data;
+        for (let answer of this.answers) {
+          this.buildAnswerDisplay(answer);
+          // Find correct Answer
+          if (answer.Marker) {
+            // Generate Correct Answer
+            this.answerQuestionCorrectly(answer);
+          } else {
+            // Generate Incorrect Answer
+            this.answerQuestionIncorrectly(answer);
+          }
+        }
+      });
+  }
+
+  // Load next question in line
+  loadQuestion() {
+    this.question = this.questions[this.questionIncriment];
+    this.questionNo = this.questionIncriment + 1;
+    this.noOfQuestions = Object.keys(this.questions).length;
+    this.questionText = this.question.Question_;
+    this.incorrectPrompt = this.question.IncorrectPrompt;
+    this.correctPrompt = this.question.CorrectPrompt;
+    this.setAnswers();
+    this.setTimer();
+    this.questionIncriment = this.questionIncriment + 1;
+    console.log(this.questionIncriment);
+  }
+
+  // Put answers on screen
+  buildAnswerDisplay(answer){
+    // Generate Answer
+    let parent = <HTMLDivElement>document.getElementById('answers');
+    let button = document.createElement("button");
+    let text = document.createTextNode(answer.AnswerText);
+    button.classList.add('answer');
+    button.appendChild(text);
+    button.setAttribute('id','answer-' + answer.AnswerId);
+    parent.appendChild(button);
+  }
+
   // Answer Correctly
   answerQuestionCorrectly(answer) {
     let answerButton = <HTMLButtonElement>document.getElementById('answer-' + answer.AnswerId);
     answerButton.addEventListener('click', (event) => {
-      //your code here
+      var parent = document.getElementById('answers');
+      this.answers.forEach(element => {
+        var button = <HTMLButtonElement>document.getElementById('answer-' + element.AnswerId);
+        parent.removeChild(button);
+      });    
+      this.timer.initTimer();
+      this.loadQuestion();
     });
   }
 
@@ -114,7 +144,13 @@ export class QuizQuestion {
   answerQuestionIncorrectly(answer) {
     let answerButton = <HTMLButtonElement>document.getElementById('answer-' + answer.AnswerId);
     answerButton.addEventListener('click', (event) => {
-      //your code here
+      var parent = document.getElementById('answers');
+      this.answers.forEach(element => {
+        var button = <HTMLButtonElement>document.getElementById('answer-' + element.AnswerId);
+        parent.removeChild(button);
+      });
+      this.timer.initTimer();
+      this.loadQuestion();
     });
   }
 
