@@ -29,6 +29,7 @@ export class QuizQuestion {
   questions: Array<any>;
   countdown: any;
   answers: Array<any>;
+  review: Array<any>;
   questionIncriment: any;
 
   constructor(public navCtrl: NavController, private wwapi: WildWalkApi, public navParams: NavParams) {
@@ -39,6 +40,7 @@ export class QuizQuestion {
     // Set Incriment
     this.questionIncriment = 0;
     this.currentScore = 0;
+    this.review = [];
   }
 
   ionViewDidLoad() {
@@ -112,7 +114,6 @@ export class QuizQuestion {
     this.setAnswers();
     this.setTimer();
     this.questionIncriment = this.questionIncriment + 1;
-    console.log(this.questionIncriment);
   }
 
   // Put answers on screen
@@ -133,6 +134,10 @@ export class QuizQuestion {
     answerButton.addEventListener('click', (event) => {
       // Increase the score
       this.currentScore = this.currentScore + this.countdown;
+      // Set up quiz review
+      var correct = answer.AnswerText;
+      var qTrack = {no: this.questionNo, q: this.questionText, a: answer.AnswerText, c: correct}
+      this.review.push(qTrack);
       // Check for end of questions
       if (this.questionNo < this.noOfQuestions) {
         // Remove the old answers
@@ -156,8 +161,15 @@ export class QuizQuestion {
   answerQuestionIncorrectly(answer) {
     let answerButton = <HTMLButtonElement>document.getElementById('answer-' + answer.AnswerId);
     answerButton.addEventListener('click', (event) => {
-      // Give points for trying
-      this.currentScore = this.currentScore + 10;
+      // Set up quiz review
+      var correct;
+      this.answers.forEach(element => {
+        if (element.marker) {
+          correct = element.AnswerText;
+        }
+      });
+      var qTrack = {no: this.questionNo, q: this.questionText, a: answer.AnswerText, c: correct}
+      this.review.push(qTrack);
       // Check for end of quiz
       if (this.questionNo < this.noOfQuestions) {
         // Remove the old answers from the page
