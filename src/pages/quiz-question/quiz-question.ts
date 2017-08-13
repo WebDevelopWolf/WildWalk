@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 
 import { WildWalkApi } from "../../app/shared/shared";
 import { Headers, RequestOptions, Http } from "@angular/http";
@@ -31,8 +31,9 @@ export class QuizQuestion {
   answers: Array<any>;
   review: Array<any>;
   questionIncriment: any;
+  clock: any;
 
-  constructor(public navCtrl: NavController, private wwapi: WildWalkApi, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, private wwapi: WildWalkApi, public navParams: NavParams, private alertCtrl: AlertController) {
     this.section = this.navParams.data;
   }
 
@@ -66,11 +67,14 @@ export class QuizQuestion {
 
   // Start Timer
   setTimer() {
+    if (this.clock != null) {
+      this.clock.unsubscribe();
+    }
     setTimeout(() => {
       this.timer.startTimer();
       this.countdown = 100;
       // Decrease the timer bar in sync with the timer
-      Observable.interval(1000).subscribe(x => {
+      this.clock = Observable.interval(1000).subscribe(x => {
         // Stop the clock!
         if (this.countdown > 0) {
           this.countdown--;
@@ -132,6 +136,8 @@ export class QuizQuestion {
   answerQuestionCorrectly(answer) {
     let answerButton = <HTMLButtonElement>document.getElementById('answer-' + answer.AnswerId);
     answerButton.addEventListener('click', (event) => {
+      // Show Prompt
+      this.correctAlert(this.correctPrompt);
       // Increase the score
       this.currentScore = this.currentScore + this.countdown;
       // Set up quiz review
@@ -161,6 +167,8 @@ export class QuizQuestion {
   answerQuestionIncorrectly(answer) {
     let answerButton = <HTMLButtonElement>document.getElementById('answer-' + answer.AnswerId);
     answerButton.addEventListener('click', (event) => {
+      // Show Prompt
+      this.incorrectAlert(this.incorrectPrompt);
       // Set up quiz review
       var correct;
       this.answers.forEach(element => {
@@ -187,6 +195,26 @@ export class QuizQuestion {
         this.endOfQuiz();
       }
     });
+  }
+
+  // Well done message, shown on answering correctly
+  correctAlert(prompt) {
+    let alert = this.alertCtrl.create({
+      title: "Hoot! Well done!",
+      subTitle: prompt,
+      buttons: ['Ok']
+    });
+    alert.present();
+  }
+
+  // Encouragement message, shown on answering correctly
+  incorrectAlert(prompt) {
+    let alert = this.alertCtrl.create({
+      title: "Screech! Keep going!",
+      subTitle: prompt,
+      buttons: ['Ok']
+    });
+    alert.present();
   }
 
   // End the Quiz
