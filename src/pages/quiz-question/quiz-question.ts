@@ -38,6 +38,7 @@ export class QuizQuestion {
   ngOnInit() {
     // Set Incriment
     this.questionIncriment = 0;
+    this.currentScore = 0;
   }
 
   ionViewDidLoad() {
@@ -130,13 +131,24 @@ export class QuizQuestion {
   answerQuestionCorrectly(answer) {
     let answerButton = <HTMLButtonElement>document.getElementById('answer-' + answer.AnswerId);
     answerButton.addEventListener('click', (event) => {
-      var parent = document.getElementById('answers');
-      this.answers.forEach(element => {
-        var button = <HTMLButtonElement>document.getElementById('answer-' + element.AnswerId);
-        parent.removeChild(button);
-      });    
-      this.timer.initTimer();
-      this.loadQuestion();
+      // Increase the score
+      this.currentScore = this.currentScore + this.countdown;
+      // Check for end of questions
+      if (this.questionNo < this.noOfQuestions) {
+        // Remove the old answers
+        var parent = document.getElementById('answers');
+        this.answers.forEach(element => {
+          var button = <HTMLButtonElement>document.getElementById('answer-' + element.AnswerId);
+          parent.removeChild(button);
+        });
+        // Re-init the timer
+        this.timer.initTimer();
+        // Load Next Question
+        this.loadQuestion();
+      } else {
+        // End the Quiz
+        this.endOfQuiz();
+      }
     });
   }
 
@@ -144,14 +156,31 @@ export class QuizQuestion {
   answerQuestionIncorrectly(answer) {
     let answerButton = <HTMLButtonElement>document.getElementById('answer-' + answer.AnswerId);
     answerButton.addEventListener('click', (event) => {
-      var parent = document.getElementById('answers');
-      this.answers.forEach(element => {
-        var button = <HTMLButtonElement>document.getElementById('answer-' + element.AnswerId);
-        parent.removeChild(button);
-      });
-      this.timer.initTimer();
-      this.loadQuestion();
+      // Give points for trying
+      this.currentScore = this.currentScore + 10;
+      // Check for end of quiz
+      if (this.questionNo < this.noOfQuestions) {
+        // Remove the old answers from the page
+        var parent = document.getElementById('answers');
+        this.answers.forEach(element => {
+          var button = <HTMLButtonElement>document.getElementById('answer-' + element.AnswerId);
+          parent.removeChild(button);
+        });
+        // Re-init the timer
+        this.timer.initTimer();
+        // Load Next Question
+        this.loadQuestion();
+      } else {
+        // End the Quiz
+        this.endOfQuiz();
+      }
     });
+  }
+
+  // End the Quiz
+  endOfQuiz() {
+    // Pass user score up to the DB (edit existing record)
+    // Move to End Quiz Screen (w/ quiz stats)
   }
 
 }
