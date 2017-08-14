@@ -220,7 +220,12 @@ export class QuizQuestion {
   // End the Quiz
   endOfQuiz() {
     // Pass user score up to the DB (edit existing record)
-    // Move to End Quiz Screen (w/ quiz stats)
+    this.wwapi.getRepoData('quiz/updatescore/' + this.username + '/' + this.currentScore).subscribe(data => {
+      console.log(this.review);
+      // Move to End Quiz Screen (w/ quiz stats)
+      //this.navCtrl.setRoot(DiscoveryResident, {review: this.review, score: this.currentScore});
+    });
+    
   }
 
 }
